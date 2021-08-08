@@ -1,12 +1,20 @@
 import { createApp } from 'vue'
 import {
-  Header,
-  Main,
-  Aside,
-  Container
+  ElHeader,
+  ElMain,
+  ElAside,
+  ElContainer,
+  ElMenu,
+  ElSubmenu,
+  ElMenuItemGroup,
+  ElMenuItem
 } from 'element-plus'
 
-createApp.use(Header)
-createApp.use(Main)
-createApp.use(Aside)
-createApp.use(Container)
+createApp.use(ElHeader)
+createApp.use(ElMain)
+createApp.use(ElAside)
+createApp.use(ElContainer)
+createApp.use(ElMenu)
+createApp.use(ElSubmenu)
+createApp.use(ElMenuItemGroup)
+createApp.use(ElMenuItem)
