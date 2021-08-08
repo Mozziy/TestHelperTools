@@ -1,15 +1,13 @@
 <template>
-  <h1>开始</h1>
-  <h1>{{name}}</h1>
+  <div id='app'>
+    <!-- 路由占位符 -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  setup () {
-    const name = '张三'
-
-    return { name }
-  }
+  setup () { }
 }
 </script>

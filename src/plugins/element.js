@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import {
+  Header,
+  Main,
+  Aside,
+  Container
+} from 'element-plus'
 
-createApp.use(Element)
+createApp.use(Header)
+createApp.use(Main)
+createApp.use(Aside)
+createApp.use(Container)
