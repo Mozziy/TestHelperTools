@@ -10,9 +10,11 @@
     <!-- 页面主体区域 -->
     <el-container>
       <!-- 侧边栏 -->
-      <el-aside width="200px">
-        <el-menu background-color="#B0E0E6" text-color="#fff"
-          active-text-color="#ffd04b">
+      <el-aside :width="isCollapse ? '64px' : '150px'">
+        <div class="toggle-button" @click="toggleCollapse">|||</div>
+        <el-menu background-color="#B0E0E6" text-color="#696969"
+          active-text-color="#ffd04b" :unique-opened="true"
+          :collapse="isCollapse" :collapse-transition="false">
           <!-- 一级菜单 -->
           <el-submenu index="1">
             <!-- 一级菜单模板区域 -->
@@ -32,7 +34,10 @@
               </template>
             </el-menu-item>
             <el-submenu index="1-2">
-              <template #title>预留</template>
+              <template #title>
+                <i class="el-icon-dessert"></i>
+                <span>其他功能</span>
+              </template>
               <el-menu-item index="1-2-1">预留</el-menu-item>
             </el-submenu>
           </el-submenu>
@@ -45,8 +50,21 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup () {
+    const isCollapse = ref(false)
+    // 点击按钮，实现菜单的折叠和展开
+    function toggleCollapse () {
+      isCollapse.value = !isCollapse.value
+    }
+
+    return {
+      isCollapse,
+      toggleCollapse
+    }
+  }
 }
 </script>
 
@@ -59,7 +77,7 @@ export default {
   background-color: #ADD8E6	;
   padding-left: 0;
   font-size: 22px;
-  color: #fff;
+  color: #696969;
   > div {
     display: flex;
     align-items: center;
@@ -75,5 +93,18 @@ export default {
 
 .el-main {
   background-color: #F0FFFF;
+  .el-menu {
+    border-right: none;  // 解决右边菜单对不齐的情况
+  }
+}
+
+.toggle-button {
+  background-color: #AFEEEE;
+  font-size: 10px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.3em;
+  cursor: pointer;
 }
 </style>
