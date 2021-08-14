@@ -5,6 +5,7 @@
       prefix-icon="el-icon-search"
       v-model="input1"
       class="input-with-select"
+      clearable
     >
       <template #prepend>
         <el-select v-model="value" placeholder="环境选择"

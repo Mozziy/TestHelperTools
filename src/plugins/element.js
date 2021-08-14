@@ -7,7 +7,12 @@ import {
   ElMenu,
   ElSubmenu,
   ElMenuItemGroup,
-  ElMenuItem
+  ElMenuItem,
+  ElSelect,
+  ElOption,
+  ElButton,
+  ElInput,
+  ElSelectV2
 } from 'element-plus'
 
 createApp.use(ElHeader)
@@ -18,3 +23,9 @@ createApp.use(ElMenu)
 createApp.use(ElSubmenu)
 createApp.use(ElMenuItemGroup)
 createApp.use(ElMenuItem)
+createApp.use(ElSelect)
+createApp.use(ElOption)
+createApp.use(ElButton)
+createApp.use(ElInput)
+createApp.use(ElSelectV2)
+createApp.use(ElForm)

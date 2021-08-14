@@ -12,6 +12,7 @@ module.exports = {
   },
   rules: {
     'no-tabs': 'off',
+    'camelcase': [1, {'properties': 'never'}],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }

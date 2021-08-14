@@ -14,7 +14,8 @@
         <div class="toggle-button" @click="toggleCollapse">|||</div>
         <el-menu background-color="#B0E0E6" text-color="#696969"
           active-text-color="#ffd04b" :unique-opened="true"
-          :collapse="isCollapse" :collapse-transition="false">
+          :collapse="isCollapse" :collapse-transition="false"
+          :default-active="activePath" router>
           <!-- 一级菜单 -->
           <el-submenu index="1">
             <!-- 一级菜单模板区域 -->
@@ -25,7 +26,7 @@
               <span>功能菜单</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item index="1-1">
+            <el-menu-item index="/lq" @click="saveNavState('/lq')">
               <template #title>
                 <!-- 图标 -->
                 <i class="el-icon-search"></i>
@@ -33,18 +34,21 @@
                 <span>日志查询</span>
               </template>
             </el-menu-item>
-            <el-submenu index="1-2">
+            <el-submenu index="/other">
               <template #title>
                 <i class="el-icon-dessert"></i>
                 <span>其他功能</span>
               </template>
-              <el-menu-item index="1-2-1">预留</el-menu-item>
+              <!-- 第三级菜单 -->
+              <!-- <el-menu-item index="1-2-1">预留</el-menu-item> -->
             </el-submenu>
           </el-submenu>
         </el-menu>
       </el-aside>
       <!-- 右侧内容区域 -->
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -55,14 +59,26 @@ export default {
   name: 'Home',
   setup () {
     const isCollapse = ref(false)
+    const activePath = ref('')
     // 点击按钮，实现菜单的折叠和展开
     function toggleCollapse () {
       isCollapse.value = !isCollapse.value
     }
+    // 保存链接的激活状态
+    function saveNavState (activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+    }
+    // 改变数据
+    function changeData () {
+      activePath.value = window.sessionStorage.getItem('activePath')
+    }
 
     return {
       isCollapse,
-      toggleCollapse
+      activePath,
+      toggleCollapse,
+      saveNavState,
+      changeData
     }
   }
 }

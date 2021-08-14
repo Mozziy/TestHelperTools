@@ -6,3 +6,10 @@ body,
     margin: 0;
     padding: 0;
 }
+/* 日志查询栏置顶 */
+#lq {
+    margin-top: 0;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
