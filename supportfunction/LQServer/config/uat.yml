@@ -1,0 +1,12 @@
+a:
+  url:
+    - 88.88.88.88
+  port: 22
+  username: readuser
+  password: 123456
+  LogPath: /APP/log/app.log
+
+
+
+
+
