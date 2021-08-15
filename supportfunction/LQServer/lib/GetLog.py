@@ -10,7 +10,7 @@
 # 用于ssh连接的python库
 import paramiko
 import logging
-from Constants import Constants
+from .Constants import Constants
 
 
 class GetLog(Constants):
@@ -110,10 +110,35 @@ class GetLog(Constants):
         self.env = env
 
         if not key or not sys_name:
-            logging.warning("没有输入键值/系统名称")
-            return {}
+            return {
+                "result": {
+                    "log": "",
+                    "err_code": 404,
+                    "message": "没有输入键值/系统名称"
+                },
+                "code": 200
+            }
 
-        return self.__read_log(key, sys_name)
+        log = self.__read_log(key, sys_name)
+        if not log:
+            return {
+                "result": {
+                    "log": "",
+                    "err_code": 401,
+                    "message": "没有找到对应的日志信息"
+                },
+                "code": 200
+            }
+
+        else:
+            return {
+                "result": {
+                    "log": log,
+                    "err_code": 200,
+                    "message": "获取成功"
+                },
+                "code": 200
+            }
 
 
 if __name__ == '__main__':
