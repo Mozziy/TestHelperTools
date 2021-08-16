@@ -1,8 +1,8 @@
 a:
   url:
-    - 192.168.8.106
+    - 172.168.88.106
   port: 22
-  username: yangxing
+  username: yanxin
   password: '123456'
   LogPath: /var/temp.log
 
